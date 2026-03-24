@@ -16,6 +16,7 @@ public:
     vector<int> min_depth;
     vector<T> dist;
     vector<int> was;
+    vector<int> leaves;
     int attempt;
 
     dfs_undigraph(int _n) : undigraph<T>(_n) {}
@@ -47,6 +48,7 @@ public:
         min_depth.clear();
         dist.clear();
         was.clear();
+        leaves.clear();
     }
 
 private:
@@ -75,6 +77,7 @@ private:
             sz[v] += sz[to];
             min_depth[v] = min(min_depth[v], min_depth[to]);
         }
+        if (sz[v] == 1) leaves.push_back(v);
         end[v] = (int) order.size() - 1;
     }
 
@@ -107,5 +110,16 @@ public:
             }
         }
         assert((int) order.size() == n);
+    }
+
+    int max_depth(int v = 0) {
+        int mx = 0;
+        for (int id : g[v]) {
+            if (id == pe[v]) continue;
+            auto&e = edges[id];
+            int to = e.from ^ e.to ^ v;
+            mx = max(mx, max_depth(to) + 1);
+        }
+        return mx;
     }
 };
