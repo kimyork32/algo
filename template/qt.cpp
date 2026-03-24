@@ -15,6 +15,7 @@ using namespace std;
 #define pii pair<int,int>
 #define pll pair<ll,ll>
 #define ld long double
+// ofstream file;
 
 void solve() {
     // something
@@ -25,9 +26,11 @@ int main() {
     cin.tie(nullptr);
     int tt;
     cin >> tt;
+    // file.open("out.txt");
     while (tt--) {
         solve();
     }
+    // file.close();
     return 0;
 }
 

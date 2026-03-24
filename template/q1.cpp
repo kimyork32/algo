@@ -15,11 +15,16 @@ using namespace std;
 #define pii pair<int,int>
 #define pll pair<ll,ll>
 #define ld long double
+// ofstream file;
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
+    // file.open("out.txt");
+
     // something
+
+    // file.close();
     return 0;
 }
 
