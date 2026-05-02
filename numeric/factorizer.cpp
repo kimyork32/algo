@@ -50,12 +50,12 @@ bool IsPrime(T n, const vector<T>& bases) {
   return true;
 }
 
-bool IsPrime(int64_t n) {
-  return IsPrime(n, {2, 325, 9375, 28178, 450775, 9780504, 1795265022});
-}
-
-bool IsPrime(int32_t n) {
-  return IsPrime(n, {2, 7, 61});
+template <typename T>
+bool IsPrime(T n) {
+    if (n < 4294967296ULL) { 
+        return IsPrime(n, vector<T>{2, 7, 61});
+    }
+    return IsPrime(n, vector<T>{2, 325, 9375, 28178, 450775, 9780504, 1795265022});
 }
 
 // but if you really need uint64_t version...
@@ -281,4 +281,4 @@ vector<T> BuildDivisorsFromFactors(const vector<pair<T, int>>& factors) {
   return divisors;
 }
 
-}  // namespace factorizer
+}  // namespace factorizer
